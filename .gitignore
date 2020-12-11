@@ -1,0 +1,5 @@
+#configuracion entorno
+.env
+
+# carpetas
+node_modules
