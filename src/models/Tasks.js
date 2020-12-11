@@ -11,7 +11,10 @@ const taskSchema = new Schema({
         type: String,
         trim: true
     },
-    done: Boolean,
+    done: {
+        type: Boolean,
+        default: false
+    },
 },
     {
         versionKey: false,
