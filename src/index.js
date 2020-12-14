@@ -1,6 +1,8 @@
 // Imports
 import express from 'express'
 import TaskRoutes from './routes/taskroutes'
+import morgan from 'morgan'
+import cors from 'cors'
 
 const app = express()
 
@@ -8,7 +10,11 @@ const app = express()
 app.set('port', process.env.PORT || 3000)
 
 // Middlewares
+app.use(morgan('dev'))
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+const corsOptions = {}
+app.use(cors(corsOptions))
 
 // Database
 import './database'
@@ -21,6 +27,5 @@ app.use('/api/tasks', TaskRoutes)
 
 // Server running
 app.listen(app.get('port'), () =>
-
     console.log('Server on localhost:', app.get('port'))
 )
